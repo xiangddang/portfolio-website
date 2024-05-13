@@ -118,7 +118,7 @@ const ProjectsSection = () => {
         ))}
       </ul>
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6 mt-6">
-      <img src="https://ghchart.rshah.org/26a397/xiangddang" alt="2024 Github Chart" width='800' height='100'/>
+      <img src="https://ghchart.rshah.org/00BFFF/xiangddang" alt="2024 Github Chart" width='800' height='100'/>
       </div>
     </section>
   );
