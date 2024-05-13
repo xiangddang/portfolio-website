@@ -13,9 +13,9 @@ export default function Home() {
       <div className="container mt-24 mx-auto px-12 py-4">
         <HeroSection />
         <AchievementsSection />
-        <AboutSection />
-        <ProjectsSection />
-        <EmailSection />
+        <div id="about"><AboutSection /></div>
+        <div id="projects"><ProjectsSection /></div>
+        <div id="contact"><EmailSection /></div>
       </div>
       <Footer />
     </main>
