@@ -13,11 +13,13 @@ export async function POST(request) {
   });
 
   try {
+    const emailContent = `Email: ${email}\nSubject: ${subject}\nMessage: ${message}`;
+
     await transporter.sendMail({
-      from: `Yanying Xiang <${process.env.SMTP_USER}>`,
-      to: email,
-      subject: subject,
-      text: message,
+      from: `Frances Site <${process.env.SMTP_USER}>`,
+      to: `${process.env.EMAIL_RECIPIENT}`,
+      subject: `New contact`,
+      text: emailContent,
     });
     return NextResponse.json(
       { message: "Email sent successfully" },
