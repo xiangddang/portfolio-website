@@ -15,22 +15,25 @@ const EmailSection = () => {
       subject: e.target.subject.value,
       messgae: e.target.message.value,
     };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
 
-    if (response.status === 200) {
-        console.log("Message sent.");
-        setEmailSubmitted(true);
+      if (res.status === 200) {
+        alert('Email sent successfully');
+      } else {
+        alert('Failed to send email');
+        console.error(res);
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error sending email');
     }
   };
 
