@@ -14,12 +14,20 @@ export async function POST(request) {
 
   try {
     const emailContent = `Email: ${email}\nSubject: ${subject}\nMessage: ${message}`;
+    const emailHtml = `
+    <h2>New Contact Form Submission</h2>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Subject:</strong> ${subject}</p>
+    <p><strong>Message:</strong></p>
+    <p>${message}</p>
+    `;
 
     await transporter.sendMail({
-      from: `Frances Site <${process.env.SMTP_USER}>`,
+      from: `Personal Website <${process.env.SMTP_USER}>`,
       to: `${process.env.EMAIL_RECIPIENT}`,
-      subject: `New contact`,
+      subject: `New contact: ${subject}`,
       text: emailContent,
+      html: emailHtml,
     });
     return NextResponse.json(
       { message: "Email sent successfully" },

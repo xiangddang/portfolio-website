@@ -1,39 +1,52 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinICon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 
 const EmailSection = () => {
-    const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(
+      {
+        ...formData,
+        [name]: value
+      }
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      messgae: e.target.message.value,
-    };
+    setErrorMessage('');
+    setSuccessMessage('');
 
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
+      const res = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(formData),
       });
 
       if (res.status === 200) {
-        alert('Email sent successfully');
+        setSuccessMessage("Email sent successfully! 🎉 Thank you for reaching out. I will respond to you shortly.");
+        setFormData({ email: "", subject: "", message: ""});
       } else {
-        alert('Failed to send email');
-        console.error(res);
+        setErrorMessage("Error sending email. Please try again later.");
       }
     } catch (error) {
-      console.error(error);
-      alert('Error sending email');
+      console.error("Error sending email:", error);
+      setErrorMessage("Error sending email. Please try again later.");
     }
   };
 
@@ -44,9 +57,9 @@ const EmailSection = () => {
         <h5 className="text-xl font-bold text-white my-2">Let‘s Connect</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always open.
-          Whether you have a question or just want to say hi, I&apos;ll try my best
-          to get back to you!
+          I&apos;m currently looking for new opportunities, my inbox is always
+          open. Whether you have a question or just want to say hi, I&apos;ll
+          try my best to get back to you!
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/xiangddang">
@@ -67,10 +80,12 @@ const EmailSection = () => {
               Your email
             </label>
             <input
-            name="email"
+              name="email"
               type="email"
               id="email"
               required
+              onChange={handleChange}
+              value={formData.email}
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="jacob@google.com"
             />
@@ -83,10 +98,12 @@ const EmailSection = () => {
               Subject
             </label>
             <input
-            name="subject"
+              name="subject"
               type="text"
               id="subject"
               required
+              onChange={handleChange}
+              value={formData.subject}
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="Just saying hi"
             />
@@ -103,6 +120,8 @@ const EmailSection = () => {
               id="message"
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="Let's talk about..."
+              value={formData.message}
+              onChange={handleChange}
             />
           </div>
           <button
@@ -111,11 +130,8 @@ const EmailSection = () => {
           >
             Send Message
           </button>
-          {
-            emailSubmitted && (
-                <p className="text-green-500 text-sm mt-2">Email sent successfully!</p>
-            )
-          }
+          {errorMessage && <p className="text-red-500 text-sm mt-2">{errorMessage}</p>}
+          {successMessage && <p className="text-green-500 text-sm mt-2">{successMessage}</p>}
         </form>
       </div>
     </section>
