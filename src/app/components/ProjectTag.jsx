@@ -7,6 +7,7 @@ const ProjectTag = ({ name, onClick, isSelected }) => {
   return (
     <button
       className={`${buttonStyles} rounded-full border-2 border-primary-500 px-6 py-6 text-xl cursor-pointer`}
+      style={{ minWidth: "100px" }} // Set the minWidth property here
       onClick={() => onClick(name)}
     >
       {name}

@@ -6,58 +6,63 @@ import { motion, useInView } from "framer-motion";
 
 const projectsData = [
   {
+    // eurostay project
     id: 1,
-    title: "React Portfolio",
-    description: "Project 1 description",
-    imgae: "/images/projects/1.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    title: "Internship Project as EuroStay",
+    description: "Developed a wechat mini-program application for a startup company EuroStay.",
+    imgae: "/images/projects/eurostay.jpg",
+    tag: ["All", "Full Stack"],
+    techStack: ["React"],
+    gitUrl: "https://github.com/ZIMUQIN-L/EuroStay",
   },
   {
+    // ndicsh: motor search project
     id: 2,
-    title: "Potography Portfolio",
-    description: "Project 2 description",
-    imgae: "/images/projects/2.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    title: "Motor Industry Report Search Mini-Program",
+    description: "Developed a wechat mini-program application for searching motor industry reports.",
+    imgae: "/images/projects/ndicsh.jpg",
+    tag: ["All", "Full Stack"],
+    techStack: ["React", "Spring Boot"],
   },
   {
+    // 自动爬虫系统
     id: 3,
-    title: "E-commerce Application",
-    description: "Project 3 description",
-    imgae: "/images/projects/3.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    title: "Automatic Web Crawler System",
+    description: "Developed a automatic web crawler system for crawling news articles.",
+    imgae: "/images/projects/webscrawber.jpg",
+    tag: ["All", "Full Stack"],
+    techStack: ["Python", "Flask"],
   },
   {
     id: 4,
-    title: "Food Delivery Application",
-    description: "Project 4 description",
-    imgae: "/images/projects/4.png",
+    title: "Personal Blog",
+    description: "Developed a personal blog website.",
+    imgae: "/images/projects/blog.jpg",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    techStack: ["Hexo",],
+    gitUrl: "https://github.com/xiangddang/xiangddang.github.io",
+    previewUrl: "https://xiangddang.github.io/",
   },
   {
+    // clinic project
     id: 5,
-    title: "React Firebase Template",
-    description: "Project 5 description",
-    imgae: "/images/projects/5.png",
-    tag: ["All"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    title: "Clinic Management System",
+    description: "Developed a clinic management system for a small clinic.",
+    imgae: "/images/projects/clinic.jpg",
+    tag: ["All", "Full Stack"],
+    techStack: ["React", "Spring Boot"],
+    gitUrl: "https://github.com/xiangddang/clinic_ms"
   },
   {
+    // web development course project
     id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 6 description",
-    imgae: "/images/projects/6.png",
-    tag: ["All"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    title: "Online Marketplace Development",
+    description: "Coursework project for Web Development course. ",
+    tag: ["All", "Full Stack", "Web"],
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    imgae: "/images/projects/magic_market.jpg",
+    gitUrl: "https://github.com/xiangddang/magic_market",
+    previewUrl: "https://magicmarket-frontend-neu.uk.r.appspot.com/",
   },
 ];
 
@@ -97,8 +102,8 @@ const ProjectsSection = () => {
         />
         <ProjectTag
           onClick={handleTabChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
+          name="Full Stack"
+          isSelected={tag === "Full Stack"}
         />
       </div>
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">

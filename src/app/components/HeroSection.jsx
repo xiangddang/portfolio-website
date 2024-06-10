@@ -24,13 +24,25 @@ const HeroSection = () => {
             </span>
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-3xl mb-6 lg:text-xl">
-          Computer Science Student in Northeastern University, Full Stack Web Developer, and a quick learner.
+            Student, Full Stack Developer, and a quick learner.{" "}
+          </p>
+          <p className="text-[#ADB7BE] text-base sm:text-3xl mb-6 lg:text-xl">
+            Born in China🇨🇳, experienced at Imperial College London🇬🇧, and now Northeastern
+            University🇺🇸, I transitioned from Environmental Engineering to
+            Computer Science.
+          </p>
+          <p className="text-[#ADB7BE] text-base sm:text-3xl mb-6 lg:text-xl">
+            My passion for coding is driven by a desire to improve people&apos;s
+            lives👩🏻‍💻.
           </p>
           <div>
             <button className="px-6 py-3 rounded-full mr-4 bg-gradient-to-br from-primary-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white">
               Hire me
             </button>
-            <button className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 via-primary-500 hover:bg-slate-800 text-white mt-3" onClick={downloadCV}>
+            <button
+              className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 via-primary-500 hover:bg-slate-800 text-white mt-3"
+              onClick={downloadCV}
+            >
               <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
                 Download CV
               </span>
@@ -38,11 +50,12 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <motion.div 
-        initial={{ opacity: 0, scale: 0.5}}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="col-span-4 place-self-center mt-4 lg:mt-0">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="col-span-4 place-self-center mt-4 lg:mt-0"
+        >
           <div className="lg:w-[400px] relative">
             <Image
               src="/images/avatar.jpg"
